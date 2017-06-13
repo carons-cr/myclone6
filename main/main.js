@@ -1,13 +1,10 @@
 const loadAllItems = require('./loadAllItems.js');
 
-module.exports = function printInventory(inputs) {
-     console.log("Debug Info");
+module.exports = function main(inputs) {
      let goodsList =new GoodsList(inputs);
-     var sgoodsList='***<没钱赚商店>购物清单***\n';
-     sgoodsList+=goodsList.goodsInfo();
-     sgoodsList+='----------------------\n';
-     sgoodsList+=goodsList.goodsTotal();
-     sgoodsList+='**********************';
+     var sgoodsList='***<没钱赚商店>购物清单***\n'+goodsList.goodsInfo();
+     +'----------------------\n'+goodsList.goodsTotal()+'**********************';
+     console.log("sgoodsList");
      return sgoodsList;
 };
 
