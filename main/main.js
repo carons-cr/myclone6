@@ -1,11 +1,12 @@
 const loadAllItems = require('./loadAllItems.js');
- 
+
 
 module.exports = function main(inputs) {
      let goodsList =new GoodsList(inputs);
      var sgoodsList='***<没钱赚商店>购物清单***\n';
      sgoodsList=sgoodsList+goodsList.goodsInfo()+'----------------------\n';
      sgoodsList=sgoodsList+goodsList.goodsTotal()+'**********************';
+	 function escape(sgoodsList);
      return sgoodsList;
  };
 
@@ -70,7 +71,7 @@ module.exports = function main(inputs) {
     }; 
     	
    GoodsList.prototype.goodsTotal=function(){
-         var s2='总计：'+this.sum.toFixed(2)+'(元)\n';
+         s2='总计：'+this.sum.toFixed(2)+'(元)\n';
           return s2;
    };       
  };
