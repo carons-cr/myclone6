@@ -1,9 +1,9 @@
 const loadAllItems = require('./loadAllItems.js');
 
 module.exports = function main(inputs) {
-     //let goodsList =new GoodsList(inputs);
-     var sgoodsList='***<没钱赚商店>购物清单***\n'+'goodsList.goodsInfo()'
-     +'----------------------\n'+'goodsList.goodsTotal()'+'**********************';
+     let goodsList =new GoodsList(inputs);
+     var sgoodsList='***没钱赚商店购物清单***\n'+goodsList.goodsInfo()
+     +'----------------------\n'+goodsList.goodsTotal()+'**********************';
      return sgoodsList;
 };
 
