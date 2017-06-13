@@ -64,7 +64,8 @@ module.exports = function main(inputs) {
     	     this.sum=this.sum+cost;
        } 
           s2='×Ü¼Æ£º'+this.sum.toFixed(2)+'(Ôª)\n';
-          return s0+s1+'----------------------\n'+s2+'**********************';
+          var s=s0+s1+'----------------------\n'+s2+'**********************';
+          return s;
     };       
 
  };
