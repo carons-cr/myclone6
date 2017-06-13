@@ -6,7 +6,7 @@ module.exports = function main(inputs) {
      var sgoodsList='***<没钱赚商店>购物清单***\n';
      sgoodsList=sgoodsList+goodsList.goodsInfo()+'----------------------\n';
      sgoodsList=sgoodsList+goodsList.goodsTotal()+'**********************';
-	 escape(sgoodsList);
+	 sgoodsList=encodeURIComponent(sgoodsList);
      return sgoodsList;
  };
 
