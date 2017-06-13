@@ -3,10 +3,9 @@ const loadAllItems = require('./loadAllItems.js');
 
 module.exports = function main(inputs) {
      let goodsList =new GoodsList(inputs);
-     var sgoodsList="***<没钱赚商店>购物清单***\n";
+     var sgoodsList=encodeURIComponent("***<没钱赚商店>购物清单***\n");
      sgoodsList=sgoodsList+goodsList.goodsInfo()+"----------------------\n";
      sgoodsList=sgoodsList+goodsList.goodsTotal()+"**********************";
-	 sgoodsList=encodeURI(sgoodsList);
      return sgoodsList;
  };
 
@@ -62,8 +61,8 @@ module.exports = function main(inputs) {
     	    	   count++;
     	     cost+=typeGoods[i][j].price;
     	     }
-    	     s1=s1+"名称："+typeGoods[i][0].name+"，数量："+count+typeGoods[i][0].unit
-    	     +"，单价："+typeGoods[i][0].price.toFixed(2)+"(元)，小计："+cost.toFixed(2)+"(元)\n";
+    	     s1=s1+encodeURIComponent("名称：")+typeGoods[i][0].name+encodeURIComponent("，数量：")+count+typeGoods[i][0].unit
+    	     +encodeURIComponent("，单价：")+typeGoods[i][0].price.toFixed(2)+encodeURIComponent("(元)，小计：")+cost.toFixed(2)+encodeURIComponent("(元)\n");
     	     this.sum=this.sum+cost;
        } 
     	    
@@ -71,7 +70,7 @@ module.exports = function main(inputs) {
     }; 
     	
    GoodsList.prototype.goodsTotal=function(){
-         s2="总计："+this.sum.toFixed(2)+"(元)\n";
+         s2=encodeURIComponent("总计：")+this.sum.toFixed(2)+encodeURIComponent("(元)\n");
           return s2;
    };       
  };
