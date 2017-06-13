@@ -4,7 +4,7 @@ module.exports = function main(inputs) {
      let goodsList =new GoodsList(inputs);
      var sgoodsList='***没钱赚商店购物清单***\n'+goodsList.goodsInfo()
      +'----------------------\n'+goodsList.goodsTotal()+'**********************';
-     print(sgoodsList);
+     document.write(sgoodsList);
 };
 
  function Goods(barcode,name,unit,price){
