@@ -2,9 +2,8 @@ const loadAllItems = require('./loadAllItems.js');
 
 module.exports = function main(inputs) {
      let goodsList =new GoodsList(inputs);
-     var sgoodsList='***没钱赚商店购物清单***\n'+goodsList.goodsInfo()
-     +'----------------------\n'+goodsList.goodsTotal()+'**********************';
-     document.write(sgoodsList);
+     return goodsList;
+
 };
 
  function Goods(barcode,name,unit,price){
@@ -16,13 +15,14 @@ module.exports = function main(inputs) {
 
  function GoodsList(inputs){
     this.sum=0;
-    GoodsList.prototype.goodsInfo=function(){
       var allGoods=new Array();      //数组中包括所有商品
       allGoods=loadAllItems();
       var goodsArray =new Array();     //储存客户购买的商品
       var typeGoods=new Array();       //将购买的商品分类
       typeGoods[0]=new Array();
+      var s0='***<没钱赚商店>购物清单***\n';
       var s1='';
+      var s2='';
       for(var i=0;i<inputs.length;i++){
     	//根据商品码得到商品信息并将该商品存入数组
             for(var j=0;j<allGoods.length;j++){
@@ -63,12 +63,8 @@ module.exports = function main(inputs) {
     	     +'，单价：'+typeGoods[i][0].price.toFixed(2)+'(元)，小计：'+cost.toFixed(2)+'(元)\n';
     	     this.sum=this.sum+cost;
        } 
-    	    
-       return s1;
-    }; 
-    	
-    GoodsList.prototype.goodsTotal=function(){
-          var s2='总计：'+this.sum.toFixed(2)+'(元)\n';
-          return s2;
+          s2='总计：'+this.sum.toFixed(2)+'(元)\n';
+          return s0+s1+'----------------------\n'+s2+'**********************';
     };       
+
  };
