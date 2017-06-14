@@ -1,9 +1,9 @@
-const loadAllItems = require('./loadAllItems.js');
+ï»¿const loadAllItems = require('./loadAllItems.js');
 
 
     module.exports = function main(inputs) {
          let goodsList =new GoodsList(inputs);
-         var sgoodsList='***<Ã»Ç®×¬ÉÌµê>¹ºÎïÇåµ¥***\n';
+         var sgoodsList='***<æ²¡é’±èµšå•†åº—>è´­ç‰©æ¸…å•***\n';
          sgoodsList=sgoodsList+goodsList.goodsInfo()+'----------------------\n';
          sgoodsList=sgoodsList+goodsList.goodsTotal()+'**********************';
          return sgoodsList;
@@ -19,14 +19,14 @@ const loadAllItems = require('./loadAllItems.js');
      function GoodsList(inputs){
         this.sum=0;
         GoodsList.prototype.goodsInfo=function(){
-          var allGoods=new Array();     //Êı×éÖĞ°üÀ¨ËùÓĞÉÌÆ·
+          var allGoods=new Array();     //æ•°ç»„ä¸­åŒ…æ‹¬æ‰€æœ‰å•†å“
           allGoods=loadAllItems();
-          var goodsArray =new Array();     //´¢´æ¿Í»§¹ºÂòµÄÉÌÆ·
-          var typeGoods=new Array();       //½«¹ºÂòµÄÉÌÆ··ÖÀà
+          var goodsArray =new Array();     //å‚¨å­˜å®¢æˆ·è´­ä¹°çš„å•†å“
+          var typeGoods=new Array();       //å°†è´­ä¹°çš„å•†å“åˆ†ç±»
           typeGoods[0]=new Array();
           var s1='';
           for(var i=0;i<inputs.length;i++){
-        	//¸ù¾İÉÌÆ·ÂëµÃµ½ÉÌÆ·ĞÅÏ¢²¢½«¸ÃÉÌÆ·´æÈëÊı×é
+        	//æ ¹æ®å•†å“ç å¾—åˆ°å•†å“ä¿¡æ¯å¹¶å°†è¯¥å•†å“å­˜å…¥æ•°ç»„
                 for(var j=0;j<allGoods.length;j++){
     	          if(allGoods[j].barcode==inputs[i]){
     			let goods = new Goods(allGoods[j].barcode,allGoods[j].name,allGoods[j].unit,allGoods[j].price);
@@ -34,12 +34,12 @@ const loadAllItems = require('./loadAllItems.js');
     			continue;
     	          }
     	    }  
-               //½«µÚÒ»¸öÉÌÆ·´æÈëµÚÒ»ÖÖÀàĞÍµÄÉÌÆ·
+               //å°†ç¬¬ä¸€ä¸ªå•†å“å­˜å…¥ç¬¬ä¸€ç§ç±»å‹çš„å•†å“
                if((typeGoods[0].length==0)&&(typeGoods.length==1)){
     		   typeGoods[0][0]=goodsArray[0];
-                }else{                           //´ÓµÚ¶ş¸öÉÌÆ·¿ªÊ¼¶ÔÉÌÆ··ÖÀàÅĞ¶Ï    
+                }else{                           //ä»ç¬¬äºŒä¸ªå•†å“å¼€å§‹å¯¹å•†å“åˆ†ç±»åˆ¤æ–­    
        	    	   var tag=0;
-    		   for(var k=0;k<typeGoods.length;k++){           //ÈôºÍÄ³Ò»Î¬Êı×éÖĞµÚÒ»¸öÉÌÆ·Í¬ÀàÔò°´Ë³Ğò´æÈë¸ÃÒ»Î¬Êı×é
+    		   for(var k=0;k<typeGoods.length;k++){           //è‹¥å’ŒæŸä¸€ç»´æ•°ç»„ä¸­ç¬¬ä¸€ä¸ªå•†å“åŒç±»åˆ™æŒ‰é¡ºåºå­˜å…¥è¯¥ä¸€ç»´æ•°ç»„
     		          if(goodsArray[i].barcode==(typeGoods[k][0].barcode)){
     				 var len1=typeGoods[k].length;
     				 typeGoods[k][len1]=goodsArray[i];
@@ -47,22 +47,22 @@ const loadAllItems = require('./loadAllItems.js');
     				 continue;
     			  }
     	           }
-    	           if(tag==0){                 //ÈôºÍÒÑÓĞµÄÀàĞÍÉÌÆ·²»Ò»ÑùÔòĞÂÔöÒ»Î¬Êı×é£¬´æÈëĞÂÉÌÆ·ÀàĞÍ
+    	           if(tag==0){                 //è‹¥å’Œå·²æœ‰çš„ç±»å‹å•†å“ä¸ä¸€æ ·åˆ™æ–°å¢ä¸€ç»´æ•°ç»„ï¼Œå­˜å…¥æ–°å•†å“ç±»å‹
     			  var h=typeGoods.length;
     			  typeGoods[h]=new Array();
     			  typeGoods[h][0]=goodsArray[i];
     		   } 
                  } 
            }
-           for(var i=0;i<typeGoods.length;i++){            //°´ÉÌÆ·ÀàĞÍ½øĞĞÉÌÆ·ĞÅÏ¢Êä³ö
+           for(var i=0;i<typeGoods.length;i++){            //æŒ‰å•†å“ç±»å‹è¿›è¡Œå•†å“ä¿¡æ¯è¾“å‡º
        	     var count=0;
         	     var cost=0;
        	     for(var j=0;j<typeGoods[i].length;j++){
         	    	   count++;
         	     cost+=typeGoods[i][j].price;
         	     }
-        	     s1=s1+'Ãû³Æ£º'+typeGoods[i][0].name+'£¬ÊıÁ¿£º'+count+typeGoods[i][0].unit
-        	     +'£¬µ¥¼Û£º'+typeGoods[i][0].price.toFixed(2)+'(Ôª)£¬Ğ¡¼Æ£º'+cost.toFixed(2)+'(Ôª)\n';
+        	     s1=s1+'åç§°ï¼š'+typeGoods[i][0].name+'ï¼Œæ•°é‡ï¼š'+count+typeGoods[i][0].unit
+        	     +'ï¼Œå•ä»·ï¼š'+typeGoods[i][0].price.toFixed(2)+'(å…ƒ)ï¼Œå°è®¡ï¼š'+cost.toFixed(2)+'(å…ƒ)\n';
         	     this.sum=this.sum+cost;
            } 
         	    
@@ -70,7 +70,7 @@ const loadAllItems = require('./loadAllItems.js');
         }; 
         	
        GoodsList.prototype.goodsTotal=function(){
-             s2='×Ü¼Æ£º'+this.sum.toFixed(2)+'(Ôª)\n';
+             s2='æ€»è®¡ï¼š'+this.sum.toFixed(2)+'(å…ƒ)\n';
               return s2;
        };       
      };
